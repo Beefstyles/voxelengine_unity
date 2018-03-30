@@ -25,6 +25,22 @@ public class World : MonoBehaviour {
 
     private static List<Chunk> rebuildList = new List<Chunk>();
 
+    void Start()
+    {
+        // create the chunks
+        CreateChunks();
+
+        // Uncomment to produce a procedurally built city
+        Proc.Landscape();
+        // Comment out this when using the above Landscape()
+        //MapHandler m = new MapHandler();
+        //Vox.LoadModel("Assets/maps/monu9_test.vox", "map");
+
+
+        RebuildDirtyChunks(true);
+        started = true;
+    }
+
     public static void RebuildChunks(Chunk chunk) {
         int sides = 0;
         List<Vector3> vertices = new List<Vector3> ();
@@ -920,21 +936,7 @@ public class World : MonoBehaviour {
 		return chunks[posx, posy, posz];
     }
 
-    // Use this for initialization
-    void Start () {
-		// create the chunks
-        CreateChunks ();
-
-		// Uncomment to produce a procedurally built city
-        Proc.Landscape();
-		// Comment out this when using the above Landscape()
-        //MapHandler m = new MapHandler();
-		//Vox.LoadModel("Assets/maps/monu9_test.vox", "map");
-
-
-        RebuildDirtyChunks (true);
-        started = true;
-    }
+    
 
 
     // Update is called once per frame

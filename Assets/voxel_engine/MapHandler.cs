@@ -106,7 +106,7 @@ public class MapHandler
 		TextureHandler th = (TextureHandler)GameObject.FindObjectOfType<TextureHandler> ();
 		//renderer.material.mainTexture = th.pillars;
 		renderer.material.color = th.pillars;
-		renderer.material.shader = Shader.Find ("Standard (Vertex Color)");
+		renderer.material.shader = Shader.Find ("Standard");
 		//renderer.material.SetTextureScale("Tiling", new Vector2(5f,5f))
 //		Texture2D tex = new Texture2D(1, 1);
 //		tex.SetPixel(0, 0, Color.green);
