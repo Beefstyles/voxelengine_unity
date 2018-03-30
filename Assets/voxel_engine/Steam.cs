@@ -9,12 +9,14 @@ public class Steam : MonoBehaviour {
     private static int count = 0;
     private static int maxDrains = 10;
     private static bool created = false;
+    private ParticleSystem ps;
 
-    // Use this for initialization
     void Awake () {
         for (int i = 0; i < maxDrains; i++) {
             GameObject g = (GameObject)Instantiate (drainSteam, new Vector3 (0, 0, 0), Quaternion.identity);
-            drainSteam.GetComponent<ParticleSystem> ().loop = true;
+            ps = drainSteam.GetComponent<ParticleSystem>();
+            var drainSteamMain = ps.main;
+            drainSteamMain.loop = true;
             drainSteam.GetComponent<ParticleSystem> ().Stop ();
             drainList.Add (g);
         }
@@ -28,10 +30,9 @@ public class Steam : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update () {
         foreach(GameObject g in drainList) {
-            if(g.GetComponent<ParticleSystem>().isPlaying && created == false) {
+            if(g.GetComponent<ParticleSystem>().isPlaying && !created) {
                 g.GetComponent<ParticleSystem> ().Stop ();
             }
         }

@@ -30,8 +30,9 @@ public class Missile {
 		gameObject.name = "bullet";
         gameObject.transform.position = v;
         //gameObject.transform.localScale.Set(1, 1, 1);
-        gameObject.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard (Vertex Color)");
-        gameObject.GetComponent<MeshRenderer>().material.EnableKeyword("_VERTEXCOLOR");
+        //gameObject.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard (Vertex Color)");
+        gameObject.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard");
+        //gameObject.GetComponent<MeshRenderer>().material.EnableKeyword("_VERTEXCOLOR");
         gameObject.GetComponent<Renderer> ().enabled = true;
         gameObject.AddComponent<Rigidbody> ();
         gameObject.GetComponent<Renderer>().material.color = new Color32 (250, 200, 100, 255);

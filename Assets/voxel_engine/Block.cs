@@ -11,7 +11,7 @@ public class Block {
     public GameObject c;
     public Transform transform;
 
-    public bool alive = true;
+    public bool Alive = true;
     private float life = 1;
     private int bounces = 0;
     private float flip = 0;
@@ -27,13 +27,11 @@ public class Block {
 
     private float power = 1;
 
-    // Use this for initialization
     public Block() {
         c = GameObject.CreatePrimitive (PrimitiveType.Cube);
         c.transform.position = new Vector3 (Random.Range(70, 150), Random.Range(0, 100), Random.Range(-10.0f, -30.0f));
         c.transform.localScale.Set (1, 1, 1);
-        c.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard (Vertex Color)");
-        c.GetComponent<MeshRenderer>().material.EnableKeyword("_VERTEXCOLOR");
+        c.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard");
         c.GetComponent<Renderer> ().enabled = false;
         c.GetComponent<Renderer>().material.color = new Color32 (250, 200, 100, 255);
         transform = c.transform;
@@ -43,7 +41,7 @@ public class Block {
     public void Reset() {
         life = 1;
         bounces = 0;
-        alive = true;
+        Alive = true;
         fx_ = Random.Range (-0.5f, 0.5f);
         fz_ = Random.Range (-0.5f, 0.5f);
         life = Random.Range (1, 4);
@@ -56,7 +54,7 @@ public class Block {
 
     public void Update () {
         if(life <= 0 || bounces <= 0 || transform.position.y <= 0) {
-            alive = false;
+            Alive = false;
         } else {
             life -= Time.deltaTime;
             if (flip < 0) {
@@ -96,7 +94,7 @@ public class Block {
             if (World.IsWithinWorld (x, y, z)) {
                 if ((World.blocks [x, y, z] >> 8) != 0) {
                     c.GetComponent<Renderer> ().enabled = false;
-                    alive = false;
+                    Alive = false;
                     life = 0;
                 } else if ((World.blocks [x, y, z] >> 8) != 0 && vx < 0) {
                     transform.rotation = Quaternion.Euler (new Vector3 (0, 0, 0));

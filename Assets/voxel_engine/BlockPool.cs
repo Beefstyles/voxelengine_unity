@@ -26,14 +26,12 @@ public class BlockPool : MonoBehaviour {
         usedPool.Add (b);
     }
 
-    // Use this for initialization
     void Start () {
         for(int i = 0; i < poolSize; i++) {
             GameObject c = GameObject.CreatePrimitive (PrimitiveType.Cube);
             c.transform.position = new Vector3 (Random.Range(70, 150), Random.Range(0, 100), Random.Range(-10.0f, -30.0f));
             c.transform.localScale.Set (1, 1, 1);
-            c.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard (Vertex Color)");
-            c.GetComponent<MeshRenderer>().material.EnableKeyword("_VERTEXCOLOR");
+            c.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard)");
             c.GetComponent<Renderer> ().enabled = false;
             c.AddComponent<Rigidbody> ();
             c.GetComponent<Rigidbody> ().mass = 10;

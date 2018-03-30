@@ -28,12 +28,13 @@ public class Chunk {
         this.obj.AddComponent<MeshRenderer>();
         this.obj.AddComponent<MeshFilter>().mesh = new Mesh ();
         Material[] mats = new Material[1];
-        mats [0] = new Material(Shader.Find ("Standard (Vertex Color)"));
+        //mats [0] = new Material(Shader.Find ("Standard (Vertex Color)"));
+        mats[0] = new Material(Shader.Find("Standard"));
         //		mats [1] = new Material(Shader.Find ("Toon/Lit"));
         //		mats [2] = new Material(Shader.Find ("Diffuse"));
         this.obj.GetComponent<MeshRenderer> ().materials = mats;
         //this.obj.GetComponent<MeshRenderer>().material.shader = Shader.Find("Standard (Vertex Color)");
-        this.obj.GetComponent<MeshRenderer>().material.EnableKeyword("_VERTEXCOLOR");
+        //this.obj.GetComponent<MeshRenderer>().material.EnableKeyword("_VERTEXCOLOR");
         this.obj.GetComponent<MeshRenderer> ().receiveShadows = true;
         this.obj.AddComponent<MeshCollider> ();
         //this.obj.GetComponent<MeshCollider> ().convex = true;
